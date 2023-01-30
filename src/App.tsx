@@ -1,54 +1,68 @@
 import React, { useState } from 'react';
 import './App.css';
+import Toolbar from './components/Toolbar';
+import Content from './components/Content';
+import Footer from './components/Footer';
+import CategoryList from './components/CategoryList';
+import ItemList from './components/ItemList';
 
-function BasicComponent() {
-    return <h1>Based</h1>;
+export interface Item {
+    category: string;
+    price: number;
+    name: string;
 }
 
-type SomeProps = {
-    a: number;
-    b: string;
-};
-
-function Props(props: SomeProps) {
-    return <h1> Passed props: {JSON.stringify(props)} </h1>;
+interface CartItem {
+    item: Item;
+    count: number;
 }
 
-function FunctionalCounter() {
-    const [count, setCount] = useState(0);
-    return (
-        <div>
-            <p>Count: {count}</p>
-            <button onClick={() => setCount(count + 1)}>Inc</button>
-        </div>
-    );
-}
-
-type ClassCounterState = { count: number };
-
-class ClassCounter extends React.Component<{}, ClassCounterState> {
-    state: ClassCounterState = {
-        count: 0
-    };
-
-    render() {
-        return (
-            <div>
-                <p>Count: {this.state.count}</p>
-                <button onClick={() => this.setState({ count: this.state.count + 1 })}>Inc</button>
-            </div>
-        );
-    }
-}
+const ITEMS: Item[] = [
+    { category: 'shoes', price: 10, name: 'Shit shoes' },
+    { category: 'pants', price: 500, name: 'Shitted pants' },
+    { category: 'shirts', price: 44, name: 'Fathers T-Shirt' },
+    { category: 'other', price: 200, name: 'Just s`hit' },
+];
+const CATEGORIES = [
+    'shirts',
+    'shoes',
+    'pants',
+    'other'
+];
 
 function App() {
-    const props = { a: 1, b: 'two' };
+    const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0]);
+    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+    const displayedItems = ITEMS.filter(i => i.category === selectedCategory);
+    const totalCartItems = cartItems.reduce((prev, curr) => prev + curr.count, 0)
+
+    const handleAddToCart = (item: Item) => {
+        const existingItem = cartItems.find(ci => ci.item.name === item.name);
+        if (existingItem == null) {
+            setCartItems([...cartItems, { item, count: 1 }]);
+            return;
+        }
+        existingItem.count += 1;
+        setCartItems([...cartItems]);
+    };
+
     return (
-        <div>
-            <BasicComponent/>
-            <Props {...props}/>
-            <FunctionalCounter/>
-            <ClassCounter/>
+        <div className="main">
+            <Toolbar/>
+            <Content>
+                <h4>Cart count: {totalCartItems}</h4>
+                <CategoryList
+                    onCategorySelected={setSelectedCategory}
+                    categories={CATEGORIES}
+                    selectedCategory={selectedCategory}
+                />
+                <ItemList
+                    items={displayedItems}
+                    onAddToCart={handleAddToCart}
+                />
+            </Content>
+            <Footer></Footer>
         </div>
     );
 }
