@@ -1,18 +1,22 @@
-import { Item } from '../App';
+import { Item } from '../types';
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
 
 type ItemListProps = {
     items: Item[];
-    onAddToCart: (item: Item) => void
 }
 
-const ItemList = ({ items, onAddToCart }: ItemListProps) => {
+const ItemList = ({ items }: ItemListProps) => {
+    const { addItem, removeItem } = useContext(CartContext);
+
     return (
         <div>
             {items.map(item =>
                 <div key={item.name}>
                     <h4>{item.name}</h4>
                     <p>{item.price}</p>
-                    <button onClick={() => onAddToCart(item)}>Add to cart</button>
+                    <button onClick={() => addItem(item)}>+</button>
+                    <button onClick={() => removeItem(item)}>-</button>
                 </div>
             )}
         </div>

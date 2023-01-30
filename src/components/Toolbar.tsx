@@ -1,6 +1,6 @@
-import AuthBtn from './AuthBtn';
+import { PropsWithChildren } from 'react';
 
-const Toolbar = () => {
+const Toolbar = ({ children }: PropsWithChildren) => {
     return (
         <div style={{
             backgroundColor: 'lightgray',
@@ -11,7 +11,7 @@ const Toolbar = () => {
         }}>
             <h3>This is a toolbar!</h3>
             <span style={{ flex: '1 1 auto' }}></span>
-            <AuthBtn/>
+            {children}
         </div>
     )
 };
