@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Product A",
+      "price": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Product B",
+      "price": 2,
+      "categoryId": 2
+    },
+    {
+      "id": 3,
+      "name": "Product C",
+      "price": 3,
+      "categoryId": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Category A"
+    },
+    {
+      "id": 2,
+      "name": "Category B"
+    },
+    {
+      "id": 3,
+      "name": "Category C"
+    }
+  ]
+}
