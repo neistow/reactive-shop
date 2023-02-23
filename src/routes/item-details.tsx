@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Item } from '../types';
 import CommentForm from '../components/CommentForm';
+import { queryItem } from '../api/mocks';
 
 export default function ItemDetails() {
     const { itemId } = useParams();
@@ -11,9 +12,8 @@ export default function ItemDetails() {
     const onCommentAdded = (comment: string) => setComments([...comments, comment]);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/items/${itemId}`)
-            .then(r => r.json())
-            .then(d => setItem(d));
+        queryItem(+itemId!)
+            .then(d => setItem(d ?? null));
     }, [itemId]);
 
     return <div>

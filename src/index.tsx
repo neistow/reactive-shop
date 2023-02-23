@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/root';
 import Main from './routes/main';
 import ItemDetails from './routes/item-details';
+import Debug from './routes/debug';
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: 'items/:itemId',
                 element: <ItemDetails/>
+            },
+            {
+                path: 'debug',
+                element: <Debug/>
             }
         ]
     }

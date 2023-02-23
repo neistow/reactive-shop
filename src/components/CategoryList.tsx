@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Category } from '../types';
+import { queryCategories } from '../api/mocks';
 
 type CategoryListProps = {
     selectedCategoryId: number | null;
@@ -10,9 +11,8 @@ const CategoryList = ({ selectedCategoryId, onCategorySelected }: CategoryListPr
     const [categories, setCategories] = useState<Category[]>([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/categories')
-            .then(r => r.json())
-            .then(data => setCategories(data));
+        queryCategories()
+            .then(data => setCategories(data))
     }, []);
 
     return (
