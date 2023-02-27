@@ -1,8 +1,10 @@
 import React from 'react';
 
+import styles from './Content.module.css';
+
 const Content = ({ children }: React.PropsWithChildren) => {
     return (
-        <div style={{ width: '100%', maxWidth: '80%', margin: '0 auto' }}>
+        <div className={styles.content}>
             {children}
         </div>
     );

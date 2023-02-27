@@ -1,16 +1,12 @@
 import { PropsWithChildren } from 'react';
 
+import styles from './Toolbar.module.css'
+
 const Toolbar = ({ children }: PropsWithChildren) => {
     return (
-        <div style={{
-            backgroundColor: 'lightgray',
-            height: '64px',
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0 1rem'
-        }}>
+        <div className={styles.toolbar}>
             <h3>This is a toolbar!</h3>
-            <span style={{ flex: '1 1 auto' }}></span>
+            <span className={styles.spacer}></span>
             {children}
         </div>
     )

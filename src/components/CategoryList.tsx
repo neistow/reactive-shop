@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Category } from '../types';
 import { queryCategories } from '../api/mocks';
+import styles from './CategoryList.module.css'
 
 type CategoryListProps = {
     selectedCategoryId: number | null;
@@ -16,9 +17,9 @@ const CategoryList = ({ selectedCategoryId, onCategorySelected }: CategoryListPr
     }, []);
 
     return (
-        <div style={{ display: 'flex', columnGap: '0.5rem' }}>
+        <div className={styles.categoryList}>
             <p
-                style={{ fontWeight: selectedCategoryId === null ? 'bold' : undefined }}
+                className={selectedCategoryId === null ? styles.selectedCategory : undefined}
                 onClick={() => onCategorySelected(null)}
             >
                 ALL
@@ -26,7 +27,7 @@ const CategoryList = ({ selectedCategoryId, onCategorySelected }: CategoryListPr
             {categories.map(category => (
                 <p
                     key={category.id}
-                    style={category.id === selectedCategoryId ? { fontWeight: 'bold' } : {}}
+                    className={category.id === selectedCategoryId ? styles.selectedCategory : undefined}
                     onClick={() => onCategorySelected(category.id)}
                 >
                     {category.name}

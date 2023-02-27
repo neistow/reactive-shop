@@ -1,0 +1,8 @@
+.categoryList {
+    display: flex;
+    column-gap: 0.5rem;
+}
+
+.selectedCategory {
+    font-weight: bold;
+}

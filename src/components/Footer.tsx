@@ -1,7 +1,9 @@
+import styles from './Footer.module.css'
+
 const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
-        <div style={{ padding: '0 1rem', backgroundColor: 'lightgray' }}>
+        <div className={styles.footer}>
             Reactive Shop &copy; {currentYear}
         </div>
     )
