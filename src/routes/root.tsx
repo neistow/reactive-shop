@@ -23,10 +23,11 @@ export default function Root() {
                 <CurrencyContextProvider>
                     <CartContextProvider>
                         <Toolbar>
-                            <AuthBtn/>
+                            <AuthBtn />
                             <Cart/>
                             <CurrencySelector/>
-                            <Link to="debug" style={{ color: 'red' }}>Debug</Link>
+                            <Link to="debug" style={{ color: 'purple' }}>Debug</Link>
+                            <Link to="admin" style={{ color: 'red' }}>Admin</Link>
                         </Toolbar>
                         <Content>
                             <Outlet/>

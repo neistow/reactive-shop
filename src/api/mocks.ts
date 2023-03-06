@@ -54,3 +54,7 @@ export function queryCategories() {
     const response = [...categories];
     return Promise.resolve(response);
 }
+
+export function authorize(username: string, password: string) {
+    return new Promise<void>((res, _) => setTimeout(res, 2000));
+}

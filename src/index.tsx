@@ -7,6 +7,7 @@ import Root from './routes/root';
 import Main from './routes/main';
 import ItemDetails from './routes/item-details';
 import Debug from './routes/debug';
+import Admin from './routes/admin';
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: 'debug',
                 element: <Debug/>
+            },
+            {
+                path: 'admin',
+                element: <Admin/>
             }
         ]
     }
