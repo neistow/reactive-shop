@@ -31,6 +31,7 @@ export default function Root() {
                                 <CurrencySelector/>
                                 <Link to="debug" style={{ color: 'purple' }}>Debug</Link>
                                 <Link to="admin" style={{ color: 'red' }}>Admin</Link>
+                                <Link to="todo">Todos list</Link>
                             </Toolbar>
                             <Content>
                                 <Outlet/>

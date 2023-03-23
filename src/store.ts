@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer, { Theme } from './themeSlice';
+import todosReducer, { TodosState } from './todosSlice';
 
 export type RootState = {
-    theme: Theme
+    theme: Theme,
+    todos: TodosState
 }
 
 const initialState = {
@@ -12,6 +14,7 @@ const initialState = {
 const store = configureStore({
     reducer: {
         theme: themeReducer,
+        todos: todosReducer
     },
     preloadedState: initialState as any,
 });

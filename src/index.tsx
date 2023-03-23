@@ -8,6 +8,7 @@ import Main from './routes/main';
 import ItemDetails from './routes/item-details';
 import Debug from './routes/debug';
 import Admin from './routes/admin';
+import Todo from './routes/todo';
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: 'admin',
                 element: <Admin/>
+            },
+            {
+                path: 'todo',
+                element: <Todo/>
             }
         ]
     }
