@@ -3,15 +3,11 @@ import { Item } from '../types';
 import CategoryList from '../components/CategoryList';
 import ItemList from '../components/ItemList';
 import { queryItems } from '../api/mocks';
+import { useGetProductsQuery } from '../services/products';
 
 export default function Main() {
     const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
-    const [items, setItems] = useState<Item[]>([]);
-
-    useEffect(() => {
-        queryItems(selectedCategoryId)
-            .then(d => setItems(d));
-    }, [selectedCategoryId]);
+    const { data = [], isFetching } = useGetProductsQuery()
 
     return (
         <>
@@ -19,7 +15,12 @@ export default function Main() {
                 onCategorySelected={setSelectedCategoryId}
                 selectedCategoryId={selectedCategoryId}
             />
-            <ItemList items={items}/>
+            {isFetching ? (
+                <p>Loading products...</p>
+            ) : (
+                <ItemList items={data.map(p => ({ ...p, name: p.title, categoryId: 1 }))}/>
+            )
+            }
         </>
     )
 }
